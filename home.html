@@ -35,10 +35,12 @@
         margin: 10px;
       }
       #slideshow {
-        width: 90%;
-        height: 400px;
-        margin: 10px 5%;
+        width: 70%;
+        height: 550px;
+        margin: 10px auto;
         border: 1px solid black;
+        border-radius: 15px;
+        float: left;
       }
       #slideshow img {
         width: 100%;
@@ -47,10 +49,12 @@
         object-fit: fill;
       }
       #main {
+        float: left;
+        width: 25%;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: auto;
         margin: 15px;
-        text-align: justify;
+        /* text-align: justify; */
       }
       #main img {
         width: 75%;
@@ -59,7 +63,7 @@
       #main > div {
         border: 1px solid black;
         display: grid;
-        grid-template-rows: 70% 10% 10% 10%;
+        grid-template-rows: auto;
         place-items: center;
         margin: 15px;
         border-radius: 15px;
@@ -90,7 +94,7 @@
 
       <h1>myMovieWorld.HD</h1>
     </div>
-    <div id="slideshow"><img id="slideshow-img" src="" alt="" /></div>
+    <div id="slideshow"><img id="slideshow-img" /></div>
     <div id="main"></div>
   </body>
 </html>

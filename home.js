@@ -79,30 +79,49 @@ async function getMovie() {
   let title = document.getElementById("t").value;
   let res = await fetch(`http://www.omdbapi.com/?apikey=d23588f&t=${title}`);
   let movies = await res.json();
+  // movies = movies.Search;
+  console.log("movies:", movies);
 
+  let img = document.getElementById("slideshow-img");
   var div_main = document.getElementById("main");
-  div_main.innerHTML = null;
+  if (movies.Error == undefined) {
+    img.src = movies.Poster;
 
-  // movies.forEach(function (el) {
-  let div = document.createElement("div");
+    div_main.innerHTML = null;
 
-  let poster = document.createElement("img");
-  poster.src = movies.Poster;
+    // movies.forEach(function (el) {
+    let div = document.createElement("div");
 
-  let p_name = document.createElement("p");
-  p_name.innerHTML = movies.Title;
+    // let poster = document.createElement("img");
+    // poster.src = movies.Poster;
 
-  let p_rating = document.createElement("p");
-  p_rating.innerHTML = `IMDb Rating: ⭐ ${movies.imdbRating}`;
+    let p_name = document.createElement("h3");
+    p_name.innerHTML = movies.Title;
 
-  let p_date = document.createElement("p");
-  p_date.innerHTML = `Release Date: ${movies.Released}`;
+    let p_genre = document.createElement("p");
+    p_genre.innerHTML = `Genre: ${movies.Genre}`;
 
-  div.append(poster, p_name, p_rating, p_date);
+    let p_language = document.createElement("p");
+    p_language.innerHTML = `Language: ${movies.Language}`;
 
-  div_main.append(div);
+    let p_rating = document.createElement("p");
+    p_rating.innerHTML = `IMDb Rating: ⭐ ${movies.imdbRating}`;
+
+    let p_date = document.createElement("p");
+    p_date.innerHTML = `Release Date: ${movies.Released}`;
+
+    let p_plot = document.createElement("p");
+    p_plot.innerHTML = `Plot: ${movies.Plot}`;
+
+    div.append(p_name, p_genre, p_language, p_rating, p_date, p_plot);
+
+    div_main.append(div);
+  } else {
+    div_main.innerHTML = null;
+    img.src =
+      "https://media3.giphy.com/media/j9XoexYMmd7LdntEK4/giphy.gif?cid=ecf05e47yj6z7g6tfkcyejtl2c85peyokfo58s57yhje0353&rid=giphy.gif&ct=g";
+  }
   // });
-  // body.append(div_main);
 }
 
 // let movieArr = localStorage.getItem("movies");
@@ -112,24 +131,22 @@ async function getMovie() {
 
 var body = document.querySelector("body");
 
-function slideShow() {
-  let img = document.getElementById("slideshow-img");
+// function slideShow() {
+//   let img = document.getElementById("slideshow-img");
 
-  img.src = images[0];
+//   img.src = images[0];
 
-  let i = 0;
+//   let i = 0;
 
-  setInterval(function () {
-    if (i == images.length) {
-      i = 0;
-    }
-    img.src = images[i];
-    i++;
-  }, 3000);
-
-  // div.append(img);
-}
-slideShow();
+//   setInterval(function () {
+//     if (i == images.length) {
+//       i = 0;
+//     }
+//     img.src = images[i];
+//     i++;
+//   }, 3000);
+// }
+// slideShow();
 
 // function sorting() {
 //   let div_sort = document.createElement("div");
