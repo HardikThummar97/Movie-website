@@ -89,6 +89,14 @@ async function getMovie() {
 
     div_main.innerHTML = null;
 
+    if (movies.imdbRating > 8.5) {
+      console.log("movies.imdbRating:", movies.imdbRating);
+      let tag = document.createElement("div");
+      tag.innerHTML = "Recommended";
+      tag.setAttribute("class", "tag");
+      div_main.append(tag);
+    }
+
     // movies.forEach(function (el) {
     let div = document.createElement("div");
 
